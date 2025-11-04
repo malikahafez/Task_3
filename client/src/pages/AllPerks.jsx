@@ -82,14 +82,17 @@ export default function AllPerks() {
   }
 
   useEffect(()=>{
-    // inititial load
+    // inititial load only once
     loadAllPerks();
-  },[perks]);
+  },[]);
 
   useEffect(()=>{
     //auto search on input change
     // call api while typing
-    loadAllPerks();
+    // if(searchQuery.trim()!=='' || merchantFilter.trim()!==''){
+        loadAllPerks();
+    // }
+    
 
   },[searchQuery,merchantFilter]);
 
@@ -149,6 +152,8 @@ export default function AllPerks() {
                 type="text"
                 className="input"
                 placeholder="Enter perk name..."
+                onChange = {(e)=> setSearchQuery(e.target.value)}
+                value = {searchQuery}
                 
               />
               <p className="text-xs text-zinc-500 mt-1">
@@ -164,6 +169,8 @@ export default function AllPerks() {
               </label>
               <select
                 className="input"
+                onChange = {(e)=> setMerchantFilter(e.target.value)}
+                value= {merchantFilter}
                 
               >
                 <option value="">All Merchants</option>
