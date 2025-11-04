@@ -81,6 +81,19 @@ export default function AllPerks() {
     }
   }
 
+  useEffect(()=>{
+    // inititial load
+    loadAllPerks();
+  },[perks]);
+
+  useEffect(()=>{
+    //auto search on input change
+    // call api while typing
+    loadAllPerks();
+
+  },[searchQuery,merchantFilter]);
+
+
   // ==================== EVENT HANDLERS ====================
 
   
